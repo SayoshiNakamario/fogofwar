@@ -1,6 +1,6 @@
-# MISTswap
+# FOW
 
-https://mistswap.fi
+Fow.FowWow
 
 ## Deployed Contracts
 
