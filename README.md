@@ -1,11 +1,11 @@
-# MISTswap
-(May not need)
-https://mistswap.fi
+# FogOfWar
+
+https://fogofwar.cash
 
 
 ## Deployed Contracts
 
-https://github.com/mistswapdex/mistswap-sdk/blob/master/src/constants/addresses.ts
+https://github.com/SayoshiNakamario/fogofwar-sdk/blob/master/src/constants/addresses.ts
 
 ## Docs
 
