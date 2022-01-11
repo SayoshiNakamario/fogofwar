@@ -488,15 +488,15 @@
   dependencies:
     keccak "^3.0.0"
 
-"@mistswapdex/sdk@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@mistswapdex/sdk/-/sdk-0.0.11.tgz#b951dec9da12d701ebe4a03a5e7a7639450ae3bd"
-  integrity sha512-P8yWH41ReWnK/XarXtPLgKYUDRKnUpqd8b8SyrRnCKnGbc5jl0dTAQYdXPUJVhRnFQmsYdO+HOiLNT8z6NfOuw==
+"@fogofwar/sdk@^0.0.11":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@fogofwar/sdk/-/sdk-0.0.12.tgz#8fc2960a7dbe62321f84072fe521b2e3a5506b0b"
+  integrity sha512-GLveF+EtQ51MFOob/BY6GhWqrFHncR+7HpzE/yBwX0bx2ov421TkUnIs6yKlZgkMYqJ/tzbRUkbIrEt6C0yGHw==
   dependencies:
     big.js "^6.1.0"
     decimal.js-light "^2.5.0"
     isomorphic-unfetch "^3.1.0"
-    jsbi "^3.1.0"
+    jsbi "^3.1.6"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
@@ -5388,10 +5388,10 @@ js-yaml@3.x, js-yaml@^3.12.0, js-yaml@^3.13.0, js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
-jsbi@^3.1.0:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.2.4.tgz#aba5b77a14d7f546adc0bd17ab82c07e29f54e91"
-  integrity sha512-iOygwxPzMYli5xrjfd83Vy4Wyu9Ovpw6wWWFy5Kj7XP+pZxPp7Cy72F92iAt2j+6tTDYunvLtC+2tH3xCX37ng==
+jsbi@^3.1.6:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.2.5.tgz#b37bb90e0e5c2814c1c2a1bcd8c729888a2e37d6"
+  integrity sha512-aBE4n43IPvjaddScbvWRA2YlTzKEynHzu7MqOyTipdHucf/VxS63ViCjxYRg86M8Rxwbt/GfzHl1kKERkt45fQ==
 
 jsbn@~0.1.0:
   version "0.1.1"
