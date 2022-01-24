@@ -1,64 +1,76 @@
 // SPDX-License-Identifier: MIT
-// Audit on 5-Jan-2021 by Keno and BoringCrypto
+// OpenZeppelin Contracts v4.4.1 (access/Ownable.sol)
 
-// P1 - P3: OK
-pragma solidity 0.6.12;
+pragma solidity ^0.8.0;
 
-// Source: https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol + Claimable.sol
-// Edited by BoringCrypto
+import "./Context.sol";
 
-// T1 - T4: OK
-contract OwnableData {
-    // V1 - V5: OK
-    address public owner;
-    // V1 - V5: OK
-    address public pendingOwner;
-}
+/**
+ * @dev Contract module which provides a basic access control mechanism, where
+ * there is an account (an owner) that can be granted exclusive access to
+ * specific functions.
+ *
+ * By default, the owner account will be the one that deploys the contract. This
+ * can later be changed with {transferOwnership}.
+ *
+ * This module is used through inheritance. It will make available the modifier
+ * `onlyOwner`, which can be applied to your functions to restrict their use to
+ * the owner.
+ */
+abstract contract Ownable is Context {
+    address private _owner;
 
-// T1 - T4: OK
-contract Ownable is OwnableData {
-    // E1: OK
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-    constructor () internal {
-        owner = msg.sender;
-        emit OwnershipTransferred(address(0), msg.sender);
+    /**
+     * @dev Initializes the contract setting the deployer as the initial owner.
+     */
+    constructor() {
+        _transferOwnership(_msgSender());
     }
 
-    // F1 - F9: OK
-    // C1 - C21: OK
-    function transferOwnership(address newOwner, bool direct, bool renounce) public onlyOwner {
-        if (direct) {
-            // Checks
-            require(newOwner != address(0) || renounce, "Ownable: zero address");
-
-            // Effects
-            emit OwnershipTransferred(owner, newOwner);
-            owner = newOwner;
-        } else {
-            // Effects
-            pendingOwner = newOwner;
-        }
+    /**
+     * @dev Returns the address of the current owner.
+     */
+    function owner() public view virtual returns (address) {
+        return _owner;
     }
 
-    // F1 - F9: OK
-    // C1 - C21: OK
-    function claimOwnership() public {
-        address _pendingOwner = pendingOwner;
-
-        // Checks
-        require(msg.sender == _pendingOwner, "Ownable: caller != pending owner");
-
-        // Effects
-        emit OwnershipTransferred(owner, _pendingOwner);
-        owner = _pendingOwner;
-        pendingOwner = address(0);
-    }
-
-    // M1 - M5: OK
-    // C1 - C21: OK
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
     modifier onlyOwner() {
-        require(msg.sender == owner, "Ownable: caller is not the owner");
+        require(owner() == _msgSender(), "Ownable: caller is not the owner");
         _;
+    }
+
+    /**
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
+     *
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
+     */
+    function renounceOwnership() public virtual onlyOwner {
+        _transferOwnership(address(0));
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
+     */
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        _transferOwnership(newOwner);
+    }
+
+    /**
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Internal function without access restriction.
+     */
+    function _transferOwnership(address newOwner) internal virtual {
+        address oldOwner = _owner;
+        _owner = newOwner;
+        emit OwnershipTransferred(oldOwner, newOwner);
     }
 }
